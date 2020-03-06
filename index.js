@@ -7,6 +7,7 @@ dotenv.config();
 
 //import routes
 const authRoute = require("./routes/auth");
+const postsRoute = require("./routes/posts");
 //connect to fb
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
   console.log("connected to db")
@@ -15,5 +16,6 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
 app.use(express.json());
 //routes middleware
 app.use("/api/user", authRoute);
+app.use("/api/posts", postsRoute);
 
 app.listen(3000, () => console.log("server running"));
